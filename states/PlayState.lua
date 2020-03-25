@@ -19,6 +19,8 @@ BIRD_HEIGHT = 24
 
 pause = false
 
+medal = 'blank'
+
 function PlayState:init()
     self.bird = Bird()
     self.pipePairs = {}
@@ -36,9 +38,11 @@ function PlayState:update(dt)
         if not pause then
             scrolling = false
             pause = true
+            sounds['pause']:play()
         else
             scrolling = true
             pause = false
+            sounds['pause']:play()
         end
     end
 
@@ -115,6 +119,26 @@ function PlayState:update(dt)
                 score = self.score
             })
         end
+
+        if self.score <= 0 then
+            medal = 'blank'
+        elseif self.score == 5 then
+            if medal == 'blank' then
+                sounds['medal']:play()
+            end
+            medal = 'bronze'
+        elseif self.score == 10 then
+            if medal == 'bronze' then
+                sounds['medal']:play()
+            end
+            medal = 'silver'
+        elseif self.score == 15 then 
+            if medal == 'silver' then
+                sounds['medal']:play()
+            end
+            medal = 'gold'
+        end
+
     end
 end
 
@@ -125,6 +149,7 @@ function PlayState:render()
 
     love.graphics.setFont(flappyFont)
     love.graphics.print('Score: ' .. tostring(self.score), 8, 8)
+    love.graphics.draw(medals[medal], VIRTUAL_WIDTH - 40, 10, 0, 1, 1)
 
     self.bird:render()
 

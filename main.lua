@@ -87,9 +87,18 @@ function love.load()
         ['explosion'] = love.audio.newSource('explosion.wav', 'static'),
         ['hurt'] = love.audio.newSource('hurt.wav', 'static'),
         ['score'] = love.audio.newSource('score.wav', 'static'),
+        ['medal'] = love.audio.newSource('medal_up.wav', 'static'),
+        ['pause'] = love.audio.newSource('pause.wav', 'static'),
 
         -- https://freesound.org/people/xsgianni/sounds/388079/
         ['music'] = love.audio.newSource('marios_way.mp3', 'static')
+    }
+
+    medals = {
+        ['blank'] = love.graphics.newImage('medals/blank.png'),
+        ['bronze'] = love.graphics.newImage('medals/bronze_medal.png'),
+        ['silver'] = love.graphics.newImage('medals/silver_medal.png'),
+        ['gold'] = love.graphics.newImage('medals/gold_medal.png')
     }
 
     -- kick off music
