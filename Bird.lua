@@ -51,11 +51,7 @@ function Bird:update(dt)
     end
 
     -- update bird y based on jump and check to see if bird goes off top of screen
-    if self.y < 0 then
-        self.y = 0
-    else
-        self.y = self.y + self.dy
-    end
+    self.y = self.y + self.dy
 end
 
 function Bird:render()

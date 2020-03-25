@@ -174,6 +174,13 @@ function love.draw()
     love.graphics.draw(background, -backgroundScroll, 0)
     gStateMachine:render()
     love.graphics.draw(ground, -groundScroll, VIRTUAL_HEIGHT - 16)
+
+    if pause then
+        pause_screen = love.graphics.newImage('pause.png')
+        love.graphics.draw(pause_screen, 0, 0)
+        love.graphics.setFont(hugeFont)
+        love.graphics.printf('Pause', 0, 120, VIRTUAL_WIDTH, 'center')
+    end
     
     push:finish()
 end
